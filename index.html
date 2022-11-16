@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    p {
+      font-size: 18px;
+    }
+    .custom-text-4xl {
+      font-size: 2.45rem;
+      line-height: 2.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container w-full h-full mt-2">
+    <nav>
+      <div class="flex flex-col">
+        <div class="flex flex-row justify-between px-4 mt-4">
+          <div>
+            <img src="./logo.svg" alt="logo">
+          </div>
+          <div id="menu_action_3lines">
+            <img src="./icon-menu.svg" alt="icon-menu">
+          </div>
+        </div>
+        <div style="margin-top: 19px;">
+          <img src="./image-hero-mobile.png" alt="image-hero-mobile">
+        </div>
+      </div>
+        
+    </nav>
+    <div class="flex flex-row justify-center font-bold custom-text-4xl mt-6 text-center"> Make remote work</div>
+    <div class="flex flex-row justify-center mb-6 mt-5 text-center">
+      <p>
+        Get your team in sync, no matter your <br /> location. Streamline processes, 
+        create <br /> team rituals, and watch productivity soar.
+      </p>
+    </div>
+    <div class="flex flex-row justify-center mb-12">
+      <button class="border-2 rounded-2xl bg-black text-white font-bold px-4 py-2">Learn more</button>
+    </div>
+    <div class="flex flex-row justify-between px-4">
+      <img class="object-fill w-16 h-4" src="./client-databiz.svg" alt="client-databiz">
+      <img class="object-fill w-12 h-6 -mt-1" src="./client-audiophile.svg" alt="client-audiophile">
+      <img class="object-fill w-16 h-4 items-center" src="./client-meet.svg" alt="client-meet">
+      <img class="object-fill w-16 h-5 items-start" src="./client-maker.svg" alt="client-maker">
+    </div>
+    <div class="absolute top-0 w-full h-full bg-black opacity-50 hidden" id="overlay_bg">
+      hahaha
+    </div>
+    <div class="absolute flex flex-col bg-white top-0 right-0 h-full w-60 hidden" id="menulist">
+      <div class="flex flex-row justify-end mb-7 mt-4 mr-4" id="menu_action_x">
+        <img class="" src="./icon-close-menu.svg" alt="icon-close-menu">
+      </div>
+      <div class="flex flex-col">
+        <div class="flex flex-row px-7 mb-3 space-x-4 items-center" id="features_dropdown">
+          <div>
+            Features
+          </div>
+          <div>
+            <img id="feature_arrow_icon" src="./icon-arrow-down.svg" alt="icon-arrow-down">
+          </div>
+        </div>
+        <div id="features_list" class="flex flex-col hidden"> 
+          <div class="flex flex-row px-10 mt-2 mb-4 items-center">
+            <div>
+              <img src="./icon-todo.svg" alt="icon-todo">
+            </div>
+            <div class="px-3">
+              Todo List
+            </div>
+          </div>
+          <div class="flex flex-row px-10 items-start mb-4 items-center">
+            <div>
+              <img src="./icon-calendar.svg" alt="icon-calendar">
+            </div>
+            <div class="px-3">
+              Calender
+            </div>
+          </div>
+          <div class="flex flex-row px-10 items-start mb-4 items-center">
+            <div>
+              <img src="./icon-reminders.svg" alt="icon-reminders">
+            </div>
+            <div class="px-3">
+              Reminders
+            </div>
+          </div>
+          <div class="flex flex-row px-10 items-start mb-4 items-center">
+            <div>
+              <img src="./icon-planning.svg" alt="icon-planning">
+            </div>
+            <div class="px-3">
+              Planning
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex flex-col">
+        <div class="flex flex-row px-7 mb-3 space-x-4 items-center" id="company_dropdown">
+          <div>
+            Company
+          </div>
+          <div>
+            <img id="company_arrow_icon" src="./icon-arrow-down.svg" alt="icon-arrow-down">
+          </div> 
+        </div>
+        <div class="hidden" id="company_list">
+          <div class="px-10">
+            History
+          </div>
+          <div class="px-10 mt-4">
+            Our Team
+          </div>
+          <div class="px-10 mt-4">
+            Blog
+          </div>
+        </div>
+      </div>
+      <div class="px-7 mb-3">Careers</div>
+      <div class="px-7 mb-3">About</div>
+      <div class="flex flex-row justify-center mb-3">Login</div>
+      <div class="flex flex-row justify-center px-5">
+        <button class="border-2 rounded-lg border-black w-full py-1">Register</button>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="attribution mt-4">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Estevez Ben Lajamin</a>.
+  </div> -->
+</body>
+</html>
+
+<script>
+  (function() {
+    var isFeatureOpen = false
+    var isCompanyOpen = false
+    var isMenuOpen = false
+    document.getElementById("features_dropdown").addEventListener("click", features_list)
+    document.getElementById("company_dropdown").addEventListener("click", company_list)
+    document.getElementById("menu_action_x").addEventListener("click", menuActionClose)
+    document.getElementById("menu_action_3lines").addEventListener("click", menuActionOpen)
+    document.getElementById("overlay_bg").addEventListener("click", menuActionClose)
+    
+  })();
+  
+
+  function features_list() {
+    var features_list = document.getElementById("features_list")
+    if(this.isFeatureOpen == true) {
+      features_list.classList.add("hidden", "animate__animated", "animate__fadeOutUp")
+      features_list.classList.remove("animate__animated", "animate__fadeInDown")
+      this.isFeatureOpen = false
+      document.getElementById("feature_arrow_icon").src="./icon-arrow-down.svg"
+    } else {
+      this.isFeatureOpen = true
+      features_list.classList.remove("hidden", "animate__animated", "animate__fadeOutUp")
+      features_list.classList.add("animate__animated", "animate__fadeInDown")
+      document.getElementById("feature_arrow_icon").src="./icon-arrow-up.svg"
+    }
+  }
+  
+  function company_list() {
+    var company_list = document.getElementById("company_list")
+    if(this.isCompanyOpen == true) {
+      company_list.classList.add("hidden", "animate__animated", "animate__fadeOutUp")
+      company_list.classList.remove("animate__animated", "animate__fadeInDown")
+      this.isCompanyOpen = false
+      document.getElementById("company_arrow_icon").src="./icon-arrow-down.svg"
+    } else {
+      this.isCompanyOpen = true
+      company_list.classList.remove("hidden", "animate__animated", "animate__fadeOutUp", "mb-3")
+      company_list.classList.add("animate__animated", "animate__fadeInDown", "mb-3")
+      document.getElementById("company_arrow_icon").src="./icon-arrow-up.svg"
+    }
+  }
+
+  function menuActionOpen() {
+    let menulist = document.getElementById("menulist")
+    let overlay_bg = document.getElementById("overlay_bg")
+    overlay_bg.classList.remove('hidden')
+    menulist.classList.remove('hidden')
+    menulist.classList.add("animate__animated", "animate__fadeInRight")
+    menulist.classList.remove("animate__animated", "animate__fadeInLeft")
+  }
+
+  function menuActionClose() { 
+    let menulist = document.getElementById("menulist")
+    let overlay_bg = document.getElementById("overlay_bg")
+    overlay_bg.classList.add('hidden')
+    menulist.classList.add('hidden')
+    menulist.classList.remove("animate__animated", "animate__fadeInRight")
+    menulist.classList.add("animate__animated", "animate__fadeInLeft")
+
+    // if(this.isMenuOpen == true) {
+    //   document.getElementById("overlay_bg").classList.add('hidden')
+    //   document.getElementById("menulist").classList.add('hidden')
+    //   menulist.classList.remove("animate__animated", "animate__fadeInRight")
+    //   menulist.classList.add("animate__animated", "animate__fadeInLeft")
+    //   this.isMenuOpen = false
+    // } else {
+    //   document.getElementById("overlay_bg").classList.remove('hidden')
+    //   document.getElementById("menulist").classList.remove('hidden')
+    //   menulist.classList.add("animate__animated", "animate__fadeInRight")
+    //   menulist.classList.remove("animate__animated", "animate__fadeInLeft")
+    //   this.isMenuOpen = true
+    // }
+    
+    
+  }
+
+</script>
